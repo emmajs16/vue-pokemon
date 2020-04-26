@@ -7,11 +7,11 @@
                     <div>
                         <h1>My Pokemon Collection</h1>
                             <br>
-                            <div>
+                            <div v-if="countPokemon==0">
                                 <!-- Use this div if you don't have any -->
                                 <p>You don't have any pokemon! Go buy some from the store.</p>
                             </div>
-                            <div>
+                            <div v-else>
                                 <!-- Else use this one and put Pokemon here -->
                                  <div class="col-sm-6 col-md-4">
                                  		<app-MyPokemon v-for="(myPokemon,index) in getPokemon" :myPokemon="myPokemon" :index="index"></app-MyPokemon>
@@ -34,6 +34,9 @@ export default {
   computed:{
       getPokemon() {
       return this.$store.getters.collection
+    },
+    countPokemon() {
+    return this.$store.getters.collectionSize
     },
   }
 }

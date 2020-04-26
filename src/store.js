@@ -27,18 +27,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    loadData(commit) {
-      this.$http.get('data.json').then(
-        response => {
-          return response.json();
-        }).then(data => {
-        const resultArray = [];
-        for (let key in data) {
-          pokemon.push(data[key]);
-        }
-        this.pokemon = pokemon;
-      });
-    },
   },
   getters: {
     storePokemon: state => {
@@ -49,7 +37,7 @@ export default new Vuex.Store({
         },
         {
           name: 'Bulbasaur',
-          type: 'Success',
+          type: 'success',
           level: 1
         },
         {

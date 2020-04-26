@@ -9,7 +9,7 @@
                     <h6>Click Collection to see your Pokemon</h6>
                     <h6>Click Pokemon to get more Pokemon</h6>
                     <hr>
-                    <p>Total Pokemon Collected: {{ collectionSize(state )}}</p>
+                    <p>Total Pokemon Collected: {{ countPokemon }}</p>
                 </div>
             </div>
         </div>
@@ -19,6 +19,11 @@
 
 <script>
 export default {
+    computed:{
+        countPokemon() {
+        return this.$store.getters.collectionSize
+        },
+    }
 }
 </script>
 

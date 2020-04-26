@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="panel panel-info">
+    <div class="panel" :class="panelClass(myPokemon)">
         <div class="panel-heading">
             <h3 class="panel-title">
                 {{myPokemon.name}}
@@ -9,11 +9,11 @@
         <div class="panel-body">
             <div class="pull-right">
                 <button
-                    class="btn btn-info" @click="trainPokemon(index)">
+                    class="btn" :class="buttonClass(myPokemon)" @click="trainPokemon(index)">
                     Train
                 </button>
                 <button
-                    class="btn btn-info" @click="deletePokemon(index)">
+                    class="btn" :class="buttonClass(myPokemon)" @click="deletePokemon(index)">
                     Release
                 </button>
             </div>
@@ -32,8 +32,22 @@ export default {
         trainPokemon(index){
             console.log(index)
             this.$store.commit('trainPokemon', index)
+        },
+        panelClass(pokemon){
+            var string = "panel-"
+            return string + pokemon.type
+        },
+        buttonClass(pokemon){
+            var string = "btn-"
+            return string + pokemon.type
         }
     },
+    // computed:{
+    //     panelClass(pokemon){
+    //         var string = "panel-"
+    //         return string + pokemon.type
+    //     }
+    // }
 }
 </script>
 
